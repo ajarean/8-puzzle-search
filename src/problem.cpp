@@ -31,3 +31,7 @@ State* Problem::moveBlankRight(State* s) {
     std::swap(newData[blank.first][blank.second], newData[blank.first][blank.second+1]);
     return new State(newData, s, s->getDepth()+1);
 }
+
+bool Problem::goalTest(State* s) {
+    return *goalState == *s;
+}
