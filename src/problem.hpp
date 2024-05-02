@@ -11,7 +11,7 @@ class Problem {
         State* moveBlankLeft(State* s);
         State* moveBlankRight(State* s);
     public:
-        Problem(State* startState);
+        Problem(const std::vector<std::vector<int>>& start, const std::vector<std::vector<int>>& goal);
         ~Problem();
         std::vector<State*> expand(State* s);
         bool goalTest(State* s);

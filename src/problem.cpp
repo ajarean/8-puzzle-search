@@ -1,5 +1,15 @@
 #include <problem.hpp>
 
+Problem::Problem(const std::vector<std::vector<int>>& start, const std::vector<std::vector<int>>& goal) {
+    this->startState = new State(start);
+    this->goalState = new State(goal);
+}
+
+Problem::~Problem() {
+    delete startState;
+    delete goalState;
+}
+
 State* Problem::moveBlankUp(State* s) {
     std::pair<int, int> blank = s->findBlank();
     std::vector<std::vector<int>> newData = s->getData();
