@@ -12,6 +12,7 @@ class State {
         State(const std::vector<std::vector<int>>& data) : data(data) {};
         State(const std::vector<std::vector<int>>& data, State* parent, int depth) : data(data), parent(parent), depth(depth) {};
         ~State();
+        std::pair<int, int> findBlank();
 };
 
 #endif
