@@ -19,6 +19,7 @@ class State {
         void setParent(State* parent);
         void setDepth(int depth);
         std::pair<int, int> findBlank();
+        bool operator==(const State& state);
 };
 
 #endif

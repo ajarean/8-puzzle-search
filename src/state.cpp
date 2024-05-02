@@ -36,3 +36,7 @@ std::pair<int, int> State::findBlank() {
     }
     return blankLocation;
 }
+
+bool State::operator==(const State& state) {
+    return data == state.data;
+}
