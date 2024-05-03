@@ -42,6 +42,15 @@ State* Problem::moveBlankRight(State* s) {
     return new State(newData, s, s->getDepth()+1);
 }
 
+std::vector<State*> Problem::expand(State* s) {
+    std::vector<State*> expansions;
+    if (moveBlankUp(s) != nullptr) expansions.push_back(moveBlankUp(s));
+    if (moveBlankDown(s) != nullptr) expansions.push_back(moveBlankDown(s));
+    if (moveBlankLeft(s) != nullptr) expansions.push_back(moveBlankLeft(s));
+    if (moveBlankRight(s) != nullptr) expansions.push_back(moveBlankRight(s));
+    return expansions;
+}
+
 bool Problem::goalTest(State* s) {
     return *goalState == *s;
 }
