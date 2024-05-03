@@ -1,6 +1,6 @@
 #ifndef PROBLEM_H
 #define PROBLEM_H
-#include <state.cpp>
+#include "state.hpp"
 
 class Problem {
     private:

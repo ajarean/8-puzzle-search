@@ -1,4 +1,4 @@
-#include <problem.hpp>
+#include "problem.hpp"
 
 Problem::Problem(const std::vector<std::vector<int>>& start, const std::vector<std::vector<int>>& goal) {
     this->startState = new State(start);
@@ -52,5 +52,5 @@ std::vector<State*> Problem::expand(State* s) {
 }
 
 bool Problem::goalTest(State* s) {
-    return *goalState == *s;
+    return goalState->getData() == s->getData();
 }

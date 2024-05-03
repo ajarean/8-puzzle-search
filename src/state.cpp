@@ -1,4 +1,8 @@
-#include <state.hpp>
+#include "state.hpp"
+
+State::~State() {
+    delete parent;
+}
 
 std::vector<std::vector<int>> State::getData() {
     return this->data;
@@ -35,8 +39,4 @@ std::pair<int, int> State::findBlank() {
         }
     }
     return blankLocation;
-}
-
-bool State::operator==(const State& state) {
-    return data == state.data;
 }
