@@ -1,5 +1,20 @@
 #include "state.hpp"
 
+State::State(const State& state) {
+    this->data = state.data;
+    this->parent = state.parent == nullptr ? nullptr : new State(state.parent->data, state.parent->parent, state.parent->depth);
+    this->depth = state.depth;
+}
+
+State& State::operator=(const State& rhs) {
+    if (this != &rhs) {
+        this->data = rhs.data;
+        this->parent = rhs.parent == nullptr ? nullptr : new State(rhs.parent->data, rhs.parent->parent, rhs.parent->depth);
+        this->depth = rhs.depth;
+    }
+    return *this;
+}
+
 State::~State() {
     delete parent;
 }
@@ -16,7 +31,7 @@ int State::getDepth() const {
     return this->depth;
 }
 
-void State::setData(const std::vector<std::vector<int>>& data) {
+void State::setData(std::vector<std::vector<int>>& data) {
     this->data = data;
 }
 
