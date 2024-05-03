@@ -4,15 +4,15 @@ State::~State() {
     delete parent;
 }
 
-std::vector<std::vector<int>> State::getData() {
+std::vector<std::vector<int>> State::getData() const {
     return this->data;
 }
 
-State* State::getParent() {
+State* State::getParent() const {
     return this->parent;
 }
 
-int State::getDepth() {
+int State::getDepth() const {
     return this->depth;
 }
 
@@ -28,7 +28,7 @@ void State::setDepth(int depth) {
     this->depth = depth;
 }
 
-std::pair<int, int> State::findBlank() {
+std::pair<int, int> State::findBlank() const {
     std::pair<int, int> blankLocation;
     for (int i = 0; i < data.size(); ++i) {
         for (int j = 0; j < data[i].size(); ++j) {
