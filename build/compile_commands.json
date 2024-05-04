@@ -22,5 +22,11 @@
   "command": "C:\\PROGRA~1\\msys2\\ucrt64\\bin\\G__~1.EXE   -g -std=gnu++20 -o CMakeFiles\\run.dir\\src\\menu.cpp.obj -c C:\\Users\\Tingxuan\\Documents\\GitHub\\8-puzzle-search\\src\\menu.cpp",
   "file": "C:/Users/Tingxuan/Documents/GitHub/8-puzzle-search/src/menu.cpp",
   "output": "CMakeFiles/run.dir/src/menu.cpp.obj"
+},
+{
+  "directory": "C:/Users/Tingxuan/Documents/GitHub/8-puzzle-search/build",
+  "command": "C:\\PROGRA~1\\msys2\\ucrt64\\bin\\G__~1.EXE   -g -std=gnu++20 -o CMakeFiles\\run.dir\\src\\search.cpp.obj -c C:\\Users\\Tingxuan\\Documents\\GitHub\\8-puzzle-search\\src\\search.cpp",
+  "file": "C:/Users/Tingxuan/Documents/GitHub/8-puzzle-search/src/search.cpp",
+  "output": "CMakeFiles/run.dir/src/search.cpp.obj"
 }
 ]

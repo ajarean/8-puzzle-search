@@ -20,26 +20,67 @@ void Menu::start() {
                 break;
         }
     }
+
+    std::cout << std::endl << "Your starting state is: " << std::endl;
+    this->problem->getStartState().displayState();
+    std::cout << std::endl << "Your goal state is: " << std::endl;
+    this->problem->getGoalState().displayState();
+    std::cout << std::endl;
+
     choice = 0;
-    while (choice != 1 && choice != 2){
+    while (choice != 1 && choice != 2 && choice != 3){
         std::cout << "Enter your choice of algorithm (1-3):\n1. Uniform Cost Search\n2. A* with the Misplaced Tile heuristic\n3. A* with the Euclidean distance heuristic" << std::endl;
         std::cin >> choice;
         switch(choice) {
-            case 1:
-                handleDefaultPuzzle();
-                break;
-            case 2:
-                handleCustomPuzzle();
+            case 1: {
+                    UniformCostSearch uniform(problem);
+                    break;
+                }
+            case 2: {
+                    MisplacedTileInformedSearch misplaced(problem);
+                    break;
+                }
+            case 3:
                 break;
             default:
                 std::cout << "Invalid choice.\n\n";
                 break;
         }
     }
+
+    delete problem;
 }
 
 void Menu::handleDefaultPuzzle() {
-    // Handle default puzzle logic here
+    int choice = 0;
+    this->problemWidth = 3;
+    std::vector<std::vector<int>> start, goal;
+    while (choice < 1 || choice > 7){
+        std::cout << "Please choose a default puzzle type:\n1. Trivial\n2. Easy\n3. Oh Boy\n4. Very Easy\n5. doable\n6. IMPOSSIBLE\n7. 5-width example" << std::endl;
+        std::cin >> choice;
+        switch(choice) {
+            case 1: start = {{1,2,3},{4,5,6},{7,8,0}};
+                break;
+            case 2: start = {{1,2,0},{4,5,3},{7,8,6}};
+                break;
+            case 3: start = {{8,7,1},{6,0,2},{5,4,3}};
+                break;
+            case 4: start = {{1,2,3},{4,5,6},{7,0,8}};
+                break;
+            case 5: start = {{0,1,2},{4,5,3},{7,8,6}};
+                break;
+            case 6: start = {{1,2,3},{4,5,6},{8,7,0}};
+                break;
+            case 7: start = {{1,2,3,4,5},{6,7,8,0,9},{11,19,14,13,10},{16,22,12,15,18},{21,20,17,23,24}};
+                this->problemWidth = 5;
+                break;
+            default:
+                std::cout << "Invalid choice.\n\n";
+                break;
+        }
+        goal = makeGoal();
+        problem = new Problem(start, goal);
+    }
 }
 
 void Menu::handleCustomPuzzle() {
@@ -49,7 +90,7 @@ void Menu::handleCustomPuzzle() {
         if (this->problemWidth <= 0)
             std::cout << "Invalid input. Try again!\n\n";
     }
-    std::vector<std::vector<int>> start;
+    std::vector<std::vector<int>> start, goal;
     std::cout << "Enter the puzzle, use a zero to represent the blank\n";
     for (int i = 0; i < problemWidth; ++i) {
         std::vector<int> row;
@@ -61,27 +102,25 @@ void Menu::handleCustomPuzzle() {
         }
         start.push_back(row);
     }
-    std::vector<std::vector<int>> stateData
-    {
-        {1,2,3},
-        {4,5,6},
-        {7,8,0}
-    };
-    State s(stateData);
-    std::cout << std::endl << "Your starting state is: " << std::endl;
-    displayState(s);
-    std::cout << std::endl;
+    goal = makeGoal();
+    this->problem = new Problem(start, goal);
 }
 
-void Menu::displayState(State& s) const {
-    // temporary state
-    
-    std::vector<std::vector<int>> stateData = s.getData();
+std::vector<std::vector<int>> Menu::makeGoal() {
+    std::vector<std::vector<int>> goal(problemWidth, std::vector<int>(problemWidth));
+
+    int num = 1;
     for (int i = 0; i < problemWidth; ++i) {
         for (int j = 0; j < problemWidth; ++j) {
-            std::cout << stateData[i][j] << " ";
+            goal[i][j] = num;
+            num++;
         }
-        std::cout << std::endl;
     }
+    goal[problemWidth - 1][problemWidth - 1] = 0;
+
+    return goal;
 }
 
+void Menu::solveProblem() {
+
+}

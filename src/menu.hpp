@@ -2,6 +2,7 @@
 #define MENU_H
 #include "problem.hpp"
 #include "state.hpp"
+#include "search.hpp"
 #include <iostream>
 #include <vector>
 
@@ -12,13 +13,13 @@ class Menu {
         int nodesExpanded;
         int maxNodesQueued;
         int goalNodeDepth;
+        std::vector<std::vector<int>> makeGoal();
     public:
         Menu();
         void start();
         void handleDefaultPuzzle();
         void handleCustomPuzzle();
-        void displayState(State& s) const;
-
+        void solveProblem();
 };
 
 #endif

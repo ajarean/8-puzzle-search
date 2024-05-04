@@ -1,4 +1,5 @@
 #include "state.hpp"
+#include <iostream>
 
 State::State() {
     this->data = {};
@@ -91,4 +92,14 @@ bool State::operator>=(const State& rhs) const {
 
 bool State::operator==(const State& rhs) const {
     return data == rhs.data;
+}
+
+void State::displayState() const{
+    int width = data[0].size();
+    for (int i = 0; i < width; ++i) {
+        for (int j = 0; j < width; ++j) {
+            std::cout << data[i][j] << " ";
+        }
+        std::cout << std::endl;
+    }
 }
