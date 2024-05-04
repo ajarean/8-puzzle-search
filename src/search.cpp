@@ -2,6 +2,7 @@
 #include <queue>
 #include <set>
 #include <iostream>
+#include <math.h>
 
 // Base Class
 
@@ -41,6 +42,15 @@ std::optional<State> Search::doSearch() {
 
 // Euclidean
 
+int EuclideanDistanceSearch::heuristic(const State& currentState) {
+    return 0;
+}
+
+int EuclideanDistanceSearch::calculateEuclidean(std::pair<int,int> pos1, std::pair<int,int> pos2){
+    int skibidi= sqrt(pow((pos2.first-pos1.first),2) + pow((pos2.second-pos1.second),2));
+    //sqrt((x2-x1)^2+(y2-y1)^2)
+    return skibidi;
+}
 // Misplaced Tile
 
 int MisplacedTileInformedSearch::heuristic(const State& currentState) {
