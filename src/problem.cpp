@@ -1,5 +1,10 @@
 #include "problem.hpp"
 
+Problem::Problem() {
+    this->startState = nullptr;
+    this->goalState = nullptr;
+}
+
 Problem::Problem(const std::vector<std::vector<int>>& start, const std::vector<std::vector<int>>& goal) {
     this->startState = new State(start);
     this->goalState = new State(goal);
@@ -8,6 +13,22 @@ Problem::Problem(const std::vector<std::vector<int>>& start, const std::vector<s
 Problem::~Problem() {
     delete startState;
     delete goalState;
+}
+
+State Problem::getStartState() const {
+    return *this->startState;
+}
+
+State Problem::getGoalState() const {
+    return *this->goalState;
+}
+
+void Problem::setStartState(State& s) {
+    this->startState = &s;
+}
+
+void Problem::setGoalState(State& s) {
+    this->goalState = &s;
 }
 
 std::optional<State> Problem::moveBlankUp(State& s) const {
