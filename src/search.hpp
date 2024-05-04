@@ -8,7 +8,7 @@ class Search {
         Problem problem;
     public:
         Search(const Problem&);
-        State doSearch(const Problem&);
+        State doSearch();
 };
 
 #endif
