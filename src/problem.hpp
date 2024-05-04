@@ -12,10 +12,17 @@ class Problem {
         std::optional<State> moveBlankLeft(State& s) const;
         std::optional<State> moveBlankRight(State& s) const;
     public:
+        Problem();
         Problem(const std::vector<std::vector<int>>& start, const std::vector<std::vector<int>>& goal);
+        Problem(const Problem&);
         ~Problem();
-        std::vector<State> expand(State& s) const;
-        bool goalTest(const State& s) const;
+        Problem& operator=(const Problem&);
+        State getStartState() const;
+        State getGoalState() const;
+        void setStartState(State&);
+        void setGoalState(State&);
+        std::vector<State> expand(State&) const;
+        bool isGoal(const State&) const;
 
 };
 
