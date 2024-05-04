@@ -4,11 +4,11 @@
 
 class Search {
     private:
-        virtual int heuristic(const State&) = 0;
-        Problem problem;
+        virtual int heuristic(const State&);
+        Problem* problem;
     public:
-        Search(const Problem&);
-        State doSearch();
+        Search(Problem&);
+        std::optional<State> doSearch();
 };
 
 #endif
