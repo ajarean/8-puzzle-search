@@ -7,8 +7,8 @@ int main(int argc, char* argv[]) {
     std::vector<std::vector<int>> testData2 = {{1, 2, 3}, {4, 5, 6}, {7, 0, 8}};
     std::vector<std::vector<int>> testData3 = {{1, 8, 2}, {0, 4, 3}, {7, 6, 5}}; // Solvable
 
-    Problem testProblem(testData3, testData);
-    Search testSearch(testProblem);
+    Problem* testProblem = new Problem(testData3, testData);
+    UniformCostSearch testSearch(testProblem);
     // State s = testProblem.getStartState();
     // std::vector<State> v = testProblem.expand(s);
     // for (State state : v) {
