@@ -1,13 +1,48 @@
 #include "problem.hpp"
+#include <iostream>
+
+Problem::Problem() {
+    this->startState = nullptr;
+    this->goalState = nullptr;
+}
 
 Problem::Problem(const std::vector<std::vector<int>>& start, const std::vector<std::vector<int>>& goal) {
     this->startState = new State(start);
     this->goalState = new State(goal);
 }
 
+Problem::Problem(const Problem& p) {
+    this->startState = new State(*p.startState);
+    this->goalState = new State(*p.goalState);
+}
+
 Problem::~Problem() {
     delete startState;
     delete goalState;
+}
+
+Problem& Problem::operator=(const Problem& rhs) {
+    if (this != &rhs) {
+        this->startState = new State(*rhs.startState);
+        this->goalState = new State(*rhs.goalState);
+    }
+    return *this;
+}
+
+State Problem::getStartState() const {
+    return *this->startState;
+}
+
+State Problem::getGoalState() const {
+    return *this->goalState;
+}
+
+void Problem::setStartState(State& s) {
+    this->startState = &s;
+}
+
+void Problem::setGoalState(State& s) {
+    this->goalState = &s;
 }
 
 std::optional<State> Problem::moveBlankUp(State& s) const {
@@ -59,6 +94,6 @@ std::vector<State> Problem::expand(State& s) const {
     return expansions;
 }
 
-bool Problem::goalTest(const State& s) const {
-    return goalState->getData() == s.getData();
+bool Problem::isGoal(const State& s) const {
+    return *this->goalState == s;
 }

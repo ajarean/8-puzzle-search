@@ -8,4 +8,5 @@ add_executable(run
     src/problem.cpp
     src/state.cpp
     src/menu.cpp
+    src/search.cpp
 )
