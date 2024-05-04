@@ -4,6 +4,7 @@ State::State(const State& state) {
     this->data = state.data;
     this->parent = state.parent == nullptr ? nullptr : new State(state.parent->data, state.parent->parent, state.parent->depth);
     this->depth = state.depth;
+    this->cost = state.cost;
 }
 
 State& State::operator=(const State& rhs) {
@@ -11,6 +12,7 @@ State& State::operator=(const State& rhs) {
         this->data = rhs.data;
         this->parent = rhs.parent == nullptr ? nullptr : new State(rhs.parent->data, rhs.parent->parent, rhs.parent->depth);
         this->depth = rhs.depth;
+        this->cost = rhs.cost;
     }
     return *this;
 }
@@ -31,6 +33,10 @@ int State::getDepth() const {
     return this->depth;
 }
 
+int State::getCost() const {
+    return this->cost;
+}
+
 void State::setData(std::vector<std::vector<int>>& data) {
     this->data = data;
 }
@@ -41,6 +47,10 @@ void State::setParent(State* parent) {
 
 void State::setDepth(int depth) {
     this->depth = depth;
+}
+
+void State::setCost(int cost) {
+    this->cost = cost;
 }
 
 std::pair<int, int> State::findBlank() const {
@@ -54,4 +64,21 @@ std::pair<int, int> State::findBlank() const {
         }
     }
     return blankLocation;
+}
+
+bool State::operator<(const State& rhs) const {
+    return cost < rhs.cost;
+}
+
+bool State::operator>(const State& rhs) const {
+    return cost > rhs.cost;
+}
+
+bool State::operator<=(const State& rhs) const {
+    return cost <= rhs.cost;
+}
+
+
+bool State::operator>=(const State& rhs) const {
+    return cost >= rhs.cost;
 }
