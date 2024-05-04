@@ -24,6 +24,10 @@ class State {
         void setDepth(int depth);
         void setCost(int cost);
         std::pair<int, int> findBlank() const;
+        bool operator<(const State& rhs) const;
+        bool operator<=(const State& rhs) const;
+        bool operator>(const State& rhs) const;
+        bool operator>=(const State& rhs) const;
 };
 
 #endif

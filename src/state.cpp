@@ -65,3 +65,20 @@ std::pair<int, int> State::findBlank() const {
     }
     return blankLocation;
 }
+
+bool State::operator<(const State& rhs) const {
+    return cost < rhs.cost;
+}
+
+bool State::operator>(const State& rhs) const {
+    return cost > rhs.cost;
+}
+
+bool State::operator<=(const State& rhs) const {
+    return cost <= rhs.cost;
+}
+
+
+bool State::operator>=(const State& rhs) const {
+    return cost >= rhs.cost;
+}
