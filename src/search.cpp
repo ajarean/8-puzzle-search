@@ -71,6 +71,7 @@ int MisplacedTileInformedSearch::heuristic(const State& c) {
 int MisplacedTileInformedSearch::calculateManhattan(std::pair<int, int> value1, std::pair<int, int> value2) {
     // value1 --> current tile placement
     // value2 --> goal tile placement
+    
     // std::cout << "       Finding distance between " << "(" << value1.second <<" , " << value1.first << ") and "  << "(" << value2.second << ", " << value2.first << ")" << std::endl;
     int dx = std::abs(value1.first - value2.first);
     int dy = std::abs(value1.second - value2.second);
