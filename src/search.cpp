@@ -43,14 +43,24 @@ std::optional<State> Search::doSearch() {
 // Euclidean
 
 int EuclideanDistanceSearch::heuristic(const State& currentState) {
-    return 0;
+    int totalHeuristic = 0;
+    std::vector<std::vector<int>> goalState = problem->getGoalState().getData();
+    for(int y = 0; y < goalState.size(); y++){
+        for(int x = 0; x< goalState[y].size(); x++){
+            int value = goalState[y][x];
+            std::pair coordsFinal = indexInFinal(value);
+            std::pair coordsInitial = std::make_pair(y,x);
+            totalHeuristic += calculateEuclidean(coordsFinal, coordsInitial);
+        }
+    }
+    return totalHeuristic;
 }
 
 int EuclideanDistanceSearch::calculateEuclidean(std::pair<int,int> pos1, std::pair<int,int> pos2){
-    int skibidi= sqrt(pow((pos2.first-pos1.first),2) + pow((pos2.second-pos1.second),2));
+    return sqrt(pow((pos2.first-pos1.first),2) + pow((pos2.second-pos1.second),2));
     //sqrt((x2-x1)^2+(y2-y1)^2)
-    return skibidi;
 }
+
 // Misplaced Tile
 
 int MisplacedTileInformedSearch::heuristic(const State& currentState) {
