@@ -6,10 +6,10 @@ int main(int argc, char* argv[]) {
     std::vector<std::vector<int>> testData = {{1, 2, 3}, {4, 5, 6}, {7, 8, 0}};
     std::vector<std::vector<int>> testData2 = {{1, 2, 3}, {4, 5, 6}, {7, 0, 8}};
     std::vector<std::vector<int>> testData3 = {{1, 8, 2}, {0, 4, 3}, {7, 6, 5}}; // Solvable
+    std::vector<std::vector<int>> testData4 = {{1, 2, 3}, {4, 5, 6}, {0, 7, 8}};
 
-    Problem* testProblem = new Problem(testData3, testData);
+    Problem* testProblem = new Problem(testData4, testData);
     UniformCostSearch testSearch(testProblem);
-
     MisplacedTileInformedSearch testSearch2(testProblem);
     
     // State s = testProblem.getStartState();
@@ -36,6 +36,8 @@ int main(int argc, char* argv[]) {
         std::cout << "Found goal state in " << finalState2.getDepth() << " move(s)\n";
     }
     else std::cout << "Failed to find goal state bruh" << '\n';
+
+    delete testProblem;
 
     return 0;
 } 

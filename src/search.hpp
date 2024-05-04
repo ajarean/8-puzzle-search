@@ -20,7 +20,7 @@ class Search {
 
 class UniformCostSearch: public Search {
     private:
-        int heuristic(const State&) {return 0;}
+        int heuristic(const State&);
 
     public:
         UniformCostSearch(Problem* p) : Search(p) {}
