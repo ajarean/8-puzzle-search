@@ -1,8 +1,15 @@
 #include "state.hpp"
 
+State::State() {
+    this->data = {};
+    this->parent = nullptr;
+    this->depth = 0;
+    this->cost = 0;
+}
+
 State::State(const State& state) {
     this->data = state.data;
-    this->parent = state.parent == nullptr ? nullptr : new State(state.parent->data, state.parent->parent, state.parent->depth);
+    this->parent = state.parent == nullptr ? nullptr : new State(*state.parent);
     this->depth = state.depth;
     this->cost = state.cost;
 }
@@ -10,7 +17,7 @@ State::State(const State& state) {
 State& State::operator=(const State& rhs) {
     if (this != &rhs) {
         this->data = rhs.data;
-        this->parent = rhs.parent == nullptr ? nullptr : new State(rhs.parent->data, rhs.parent->parent, rhs.parent->depth);
+        this->parent = rhs.parent == nullptr ? nullptr : new State(*rhs.parent);
         this->depth = rhs.depth;
         this->cost = rhs.cost;
     }
@@ -78,7 +85,10 @@ bool State::operator<=(const State& rhs) const {
     return cost <= rhs.cost;
 }
 
-
 bool State::operator>=(const State& rhs) const {
     return cost >= rhs.cost;
+}
+
+bool State::operator==(const State& rhs) const {
+    return data == rhs.data;
 }
