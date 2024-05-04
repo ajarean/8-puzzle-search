@@ -42,26 +42,17 @@ int MisplacedTileInformedSearch::calculateManhattan(std::pair<int, int> value1, 
 
 std::optional<State> Search::doSearch() {
     State start = problem->getStartState();
-    std::priority_queue<State> pqueue;
-    std::set<State> seen;
+    std::priority_queue<State, std::vector<State>, std::greater<State>> pqueue;
     pqueue.push(problem->getStartState());
     while (!pqueue.empty()) {
         State currState = pqueue.top();
-        std::cout << "Depth: " << currState.getDepth() << ", ";
-        std::cout << pqueue.size() << " states in frontier" << std::endl << std::endl;
         pqueue.pop();
         if (problem->isGoal(currState)) return currState;
         std::vector<State> expanded = problem->expand(currState);
-        std::cout << "f(n) of all frontier states: ";
         for (State nextState : expanded) {
-            if (!seen.contains(nextState)) {
-                std::cout << "   " << nextState.getDepth() << " + " << heuristic(nextState) << std::endl;
-                nextState.setCost(nextState.getDepth() + heuristic(nextState));
-                pqueue.push(nextState);
-            }
+            nextState.setCost(nextState.getDepth() + heuristic(nextState));
+            pqueue.push(nextState);
         }
-        std::cout << "\n\n";
-        seen.insert(currState);
     }
     return std::nullopt;
 }
