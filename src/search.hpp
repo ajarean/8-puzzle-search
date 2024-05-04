@@ -5,7 +5,7 @@
 
 class Search {
     private:
-        virtual int heuristic(const State&) = 0;
+        virtual int heuristic(const State&);
 
     protected:
         Problem* problem;

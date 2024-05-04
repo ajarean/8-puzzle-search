@@ -28,16 +28,17 @@ void Menu::start() {
     std::cout << std::endl;
 
     choice = 0;
+    Search search(problem);
     while (choice != 1 && choice != 2 && choice != 3){
         std::cout << "Enter your choice of algorithm (1-3):\n1. Uniform Cost Search\n2. A* with the Misplaced Tile heuristic\n3. A* with the Euclidean distance heuristic" << std::endl;
         std::cin >> choice;
         switch(choice) {
             case 1: {
-                    UniformCostSearch uniform(problem);
+                    search = UniformCostSearch(problem);
                     break;
                 }
             case 2: {
-                    MisplacedTileInformedSearch misplaced(problem);
+                    search = MisplacedTileInformedSearch(problem);
                     break;
                 }
             case 3:
@@ -47,6 +48,13 @@ void Menu::start() {
                 break;
         }
     }
+
+    std::optional<State> solutionState = search.doSearch();
+    if (solutionState) {
+        State finalState = solutionState.value();
+        std::cout << "Found goal state in " << finalState.getDepth() << " move(s)\n";
+    }
+    else std::cout << "Failed to find goal state bruh" << '\n';
 
     delete problem;
 }

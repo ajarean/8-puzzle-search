@@ -35,7 +35,9 @@ std::optional<State> Search::doSearch() {
     return std::nullopt;
 }
 
-
+int Search::heuristic(const State& currentState) {
+    return 0;
+}
 
 // Uniform
 
