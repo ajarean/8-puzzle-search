@@ -20,7 +20,7 @@ class Problem {
         void setStartState(State&);
         void setGoalState(State&);
         std::vector<State> expand(State& s) const;
-        bool goalTest(const State& s) const;
+        bool isGoal(const State& s) const;
 
 };
 

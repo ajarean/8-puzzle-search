@@ -1,4 +1,5 @@
 #include "problem.hpp"
+#include <iostream>
 
 Problem::Problem() {
     this->startState = nullptr;
@@ -80,6 +81,6 @@ std::vector<State> Problem::expand(State& s) const {
     return expansions;
 }
 
-bool Problem::goalTest(const State& s) const {
+bool Problem::isGoal(const State& s) const {
     return goalState->getData() == s.getData();
 }
