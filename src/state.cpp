@@ -78,7 +78,10 @@ bool State::operator<=(const State& rhs) const {
     return cost <= rhs.cost;
 }
 
-
 bool State::operator>=(const State& rhs) const {
     return cost >= rhs.cost;
+}
+
+bool State::operator==(const State& rhs) const {
+    return data == rhs.data;
 }
