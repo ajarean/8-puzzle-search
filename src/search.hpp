@@ -5,8 +5,9 @@
 class Search {
     private:
         virtual int heuristic(const State&) = 0;
+        Problem problem;
     public:
-        Search();
+        Search(const Problem&);
         State doSearch(const Problem&);
 };
 
