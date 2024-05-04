@@ -82,5 +82,5 @@ std::vector<State> Problem::expand(State& s) const {
 }
 
 bool Problem::isGoal(const State& s) const {
-    return goalState->getData() == s.getData();
+    return *this->goalState == s;
 }
