@@ -32,6 +32,7 @@ class MisplacedTileInformedSearch: public Search {
         int calculateManhattan(std::pair<int, int> , std::pair<int, int> );
     
     public:
+        MisplacedTileInformedSearch(Problem* p) : Search(p) {};
 
 };
 

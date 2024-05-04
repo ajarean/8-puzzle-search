@@ -9,6 +9,9 @@ int main(int argc, char* argv[]) {
 
     Problem* testProblem = new Problem(testData3, testData);
     UniformCostSearch testSearch(testProblem);
+
+    MisplacedTileInformedSearch testSearch2(testProblem);
+    
     // State s = testProblem.getStartState();
     // std::vector<State> v = testProblem.expand(s);
     // for (State state : v) {
@@ -24,11 +27,15 @@ int main(int argc, char* argv[]) {
     if (solutionState) {
         State finalState = solutionState.value();
         std::cout << "Found goal state in " << finalState.getDepth() << " move(s)\n";
-        return 0;
     }
-    std::cout << "Failed to find goal state bruh" << '\n';
+    else std::cout << "Failed to find goal state bruh" << '\n';
 
-
+    std::optional<State> solutionState2 = testSearch2.doSearch();
+    if (solutionState2) {
+        State finalState2 = solutionState2.value();
+        std::cout << "Found goal state in " << finalState2.getDepth() << " move(s)\n";
+    }
+    else std::cout << "Failed to find goal state bruh" << '\n';
 
     return 0;
 } 
