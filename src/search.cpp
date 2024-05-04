@@ -39,6 +39,10 @@ std::optional<State> Search::doSearch() {
 
 // Uniform
 
+int UniformCostSearch::heuristic(const State& currentState) {
+    return 0;
+}
+
 // Euclidean
 
 // Misplaced Tile
