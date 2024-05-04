@@ -10,6 +10,7 @@ class State {
         int depth;
         int cost;
     public:
+        State();
         State(const std::vector<std::vector<int>>& data) : data(data), parent(nullptr), depth(0), cost(0) {};
         State(const std::vector<std::vector<int>>& data, State* parent, int depth) : data(data), parent(parent), depth(depth), cost(0) {};
         State(const State& state);

@@ -1,5 +1,12 @@
 #include "state.hpp"
 
+State::State() {
+    this->data = {};
+    this->parent = nullptr;
+    this->depth = 0;
+    this->cost = 0;
+}
+
 State::State(const State& state) {
     this->data = state.data;
     this->parent = state.parent == nullptr ? nullptr : new State(*state.parent);

@@ -11,9 +11,22 @@ Problem::Problem(const std::vector<std::vector<int>>& start, const std::vector<s
     this->goalState = new State(goal);
 }
 
+Problem::Problem(const Problem& p) {
+    this->startState = new State(*p.startState);
+    this->goalState = new State(*p.goalState);
+}
+
 Problem::~Problem() {
     delete startState;
     delete goalState;
+}
+
+Problem& Problem::operator=(const Problem& rhs) {
+    if (this != &rhs) {
+        this->startState = new State(*rhs.startState);
+        this->goalState = new State(*rhs.goalState);
+    }
+    return *this;
 }
 
 State Problem::getStartState() const {
