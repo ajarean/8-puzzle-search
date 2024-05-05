@@ -4,8 +4,14 @@
 #include <vector>
 
 int main(int argc, char* argv[]) {
-    Menu menu;
-    menu.start();
+    int choice = 1;
+    while (choice==1) {
+        Menu menu;
+        menu.start();
+        std::cout << "\nWould you like to try another search? If so, press 1." << std::endl;
+        std::cin >> choice;
+        std::cout << std::endl;
+    }
 
     // std::vector<std::vector<int>> testData = {{1, 2, 3}, {4, 5, 6}, {7, 8, 0}};
     // std::vector<std::vector<int>> testData2 = {{1, 2, 3}, {4, 5, 6}, {7, 0, 8}};

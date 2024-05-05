@@ -3,7 +3,9 @@
 Menu::Menu() { this->problem = nullptr, problemWidth = 0, nodesExpanded = 0, maxNodesQueued = 0, goalNodeDepth = 0; };
 
 void Menu::start() {
-    std::cout << "Welcome to Komay and friends' 8-puzzle solver!\nFeaturing:\n- Komay Sugiyama (ksugi014)\n- Adithya Iyer (aiyer026)\n- Andy Jarean (ajare002)\n- Tingxuan Wu (twu148)\n\n";
+    std::cout << "!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!" <<
+    "\nWelcome to Komay and friends' 8-puzzle solver!\nFeaturing:\n- Komay Sugiyama (ksugi014)\n- Adithya Iyer (aiyer026)\n- Andy Jarean (ajare002)\n- Tingxuan Wu (twu148)\n"
+     "!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!" << std::endl;
     int choice = 0;
     while (choice != 1 && choice != 2){
         std::cout << "Please type \"1\" to use a default puzzle, or \"2\" to enter your own puzzle.\n";
