@@ -69,9 +69,16 @@ void Menu::start() {
     else std::cout << "Failed to find goal state bruh" << '\n';
 
     std::cout << std::endl << searchType << " RESULTS: \n";
-    std::cout << "Expanded a total of: " << search->getTotalNodes() << " nodes." << std::endl;
-    std::cout << "Max number of nodes in the queue at any one time: " << search->getMaxQueue() << "." << std::endl;
-    std::cout << "Depth of the goal node: " << search->getSolutionDepth() << "." << std::endl;
+    std::cout << "Expanded a total of: " << search->getTotalNodes() << " nodes.\n";
+    std::cout << "Max number of nodes in the queue at any one time: " << search->getMaxQueue() << ".\n";
+    std::cout << "Depth of the goal node: " << search->getSolutionDepth() << ".\n";
+    int trace = 0;
+    std::cout << "Would you like to print the trace? If so, press 1. \n\n";
+    std::cin >> trace;
+    if (trace == 1) {
+        std::cout << "Printing trace: \n\n";
+        printTrace(solutionState.value());
+    }
 
     delete problem;
     delete search;
@@ -147,3 +154,18 @@ std::vector<std::vector<int>> Menu::makeGoal() {
     return goal;
 }
 
+void Menu::printTrace(State& s) {
+    State* currState = &s;
+    std::stack<State*> stack;
+    stack.push(currState);
+    while(currState->getParent() != nullptr) {
+        currState = currState->getParent();
+        stack.push(currState);
+    }
+    while(!stack.empty()) {
+        State* newState = stack.top();
+        stack.pop();
+        newState->displayState();
+        std::cout << '\n';
+    }
+}

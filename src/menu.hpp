@@ -4,6 +4,7 @@
 #include "state.hpp"
 #include "search.hpp"
 #include <iostream>
+#include <stack>
 #include <vector>
 
 class Menu {
@@ -14,6 +15,7 @@ class Menu {
         int maxNodesQueued;
         int goalNodeDepth;
         std::vector<std::vector<int>> makeGoal();
+        void printTrace(State&);
     public:
         Menu();
         void start();
