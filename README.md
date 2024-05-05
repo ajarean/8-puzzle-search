@@ -1,6 +1,6 @@
 # Sliding Puzzle Solver
 
-This is a C++ program to solve the sliding puzzle problem using various search algorithms, including Uniform Cost Search, A* with the Misplaced Tile heuristic, A* with the Euclidean distance heuristic, A* with the Manhattan distance heuristic.
+This is a C++ program to solve the sliding puzzle problem using various search algorithms including Uniform Cost Search, A* with the Misplaced Tile heuristic, A* with the Euclidean distance heuristic, and A* with the Manhattan distance heuristic.
 
 ## Usage
 
@@ -15,12 +15,13 @@ cd 8-puzzle-search
 
 3. Compile the code:
 ```bash
-g++ -o main main.cpp menu.cpp problem.cpp state.cpp search.cpp
+cmake .
+make
 ```
 
 4. Run the executable:
 ```bash
-./main
+./run
 ```
 
 5. Follow the instructions to select a puzzle and an algorithm.
