@@ -17,6 +17,7 @@ State::State(const State& state) {
 State& State::operator=(const State& rhs) {
     if (this != &rhs) {
         this->data = rhs.data;
+        if (this->parent != nullptr) delete parent;
         this->parent = rhs.parent == nullptr ? nullptr : new State(*rhs.parent);
         this->depth = rhs.depth;
         this->cost = rhs.cost;
