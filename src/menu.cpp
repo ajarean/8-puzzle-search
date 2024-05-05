@@ -78,13 +78,15 @@ void Menu::start() {
 }
 
 void Menu::handleDefaultPuzzle() {
-    int choice = 0;
+    int choice = -1;
     this->problemWidth = 3;
     std::vector<std::vector<int>> start, goal;
-    while (choice < 1 || choice > 7){
-        std::cout << "Please choose a default puzzle type:\n1. Trivial\n2. Easy\n3. Oh Boy\n4. Very Easy\n5. doable\n6. IMPOSSIBLE\n7. 5-width example" << std::endl;
+    while (choice < 0 || choice > 8){
+        std::cout << "\nPlease choose a default puzzle type:\n0. Objective\n1. Trivial\n2. Easy\n3. Oh Boy\n4. Very Easy\n5. doable\n6. IMPOSSIBLE\n7. Trivial 4-width\n8. Solvable 4-width" << std::endl;
         std::cin >> choice;
         switch(choice) {
+            case 0: start = {{1,0,3},{4,2,6},{7,5,8}};
+                break;
             case 1: start = {{1,2,3},{4,5,6},{7,8,0}};
                 break;
             case 2: start = {{1,2,0},{4,5,3},{7,8,6}};
@@ -97,8 +99,11 @@ void Menu::handleDefaultPuzzle() {
                 break;
             case 6: start = {{1,2,3},{4,5,6},{8,7,0}};
                 break;
-            case 7: start = {{1,2,3,4,5},{6,7,8,0,9},{11,19,14,13,10},{16,22,12,15,18},{21,20,17,23,24}};
-                this->problemWidth = 5;
+            case 7: start = {{1,2,3,4},{5,6,7,8},{9,10,11,12},{13,14,15,0}};
+                this->problemWidth = 4;
+                break;
+            case 8: start = {{1,2,3,4},{5,6,7,8},{9,12,10,0},{13,14,15,11}};
+                this->problemWidth = 4;
                 break;
             default:
                 std::cout << "Invalid choice.\n\n";
