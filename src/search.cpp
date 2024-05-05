@@ -51,8 +51,8 @@ int EuclideanDistanceSearch::heuristic(const State& currentState) {
             std::pair coordsFinal = indexInFinal(value);
             std::pair coordsInitial = std::make_pair(y,x);
             totalHeuristic += calculateEuclidean(coordsFinal, coordsInitial);
-            std::cout << "total heuristic is for (" << coordsInitial.first << ","<< coordsInitial.second <<") and (" << 
-            coordsFinal.first << ","<< coordsFinal.second << ") is " << totalHeuristic << std::endl;
+            // std::cout << "total heuristic is for (" << coordsInitial.first << ","<< coordsInitial.second <<") and (" << 
+            // coordsFinal.first << ","<< coordsFinal.second << ") is " << totalHeuristic << std::endl;
         }
     }
     return totalHeuristic;
