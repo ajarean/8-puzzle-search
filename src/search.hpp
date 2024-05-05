@@ -40,7 +40,6 @@ class EuclideanDistanceSearch: public Search {
 class MisplacedTileInformedSearch: public Search {
     private:
         int heuristic(const State&);
-        int heuristic(const State&) override;
         int calculateManhattan(std::pair<int, int> , std::pair<int, int> );
     
     public:
