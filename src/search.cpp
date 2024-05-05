@@ -96,7 +96,7 @@ int MisplacedTileInformedSearch::heuristic(const State& c) {
     std::vector<std::vector<int>> currentState = c.getData();
     for(int y = 0; y<currentState.size(); y++) {
         for(int x = 0; x<currentState[0].size(); x++) {
-            if(currentState[y][x] != goalState[y][x]) totalHeuristic++;
+            if(currentState[y][x] != goalState[y][x] && currentState[y][x] != 0) totalHeuristic++;
             
         }
     }
@@ -118,8 +118,9 @@ int ManhattanInformedSearch::heuristic(const State& c) {
             int value = currentState[x][y];
             std::pair coordsFinal = indexInFinal(value);
             // std::cout << "  Calculating tile " << value << std::endl;
-            totalHeuristic += calculateManhattan(std::make_pair(x, y), coordsFinal);
-            
+            if (currentState[y][x] != 0) {
+                totalHeuristic += calculateManhattan(std::make_pair(x, y), coordsFinal);
+            }
         }
     }
     // std::cout << "      state heuristic of " << totalHeuristic << std::endl;
