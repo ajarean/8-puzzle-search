@@ -32,8 +32,8 @@ void Menu::start() {
     std::string searchType;
     choice = 0;
     Search* search = nullptr;
-    while (choice != 1 && choice != 2 && choice != 3){
-        std::cout << "Enter your choice of algorithm (1-3):\n1. Uniform Cost Search\n2. A* with the Misplaced Tile heuristic\n3. A* with the Euclidean distance heuristic" << std::endl;
+    while (choice != 1 && choice != 2 && choice != 3 && choice != 4){
+        std::cout << "Enter your choice of algorithm (1-4):\n1. Uniform Cost Search\n2. A* with the Misplaced Tile heuristic\n3. A* with the Euclidean distance heuristic" << std::endl;
         std::cin >> choice;
         switch(choice) {
             case 1: {
@@ -51,10 +51,11 @@ void Menu::start() {
                 searchType = "EUCLIDEAN DISTANCE SEARCH";
                 break;
             }
-            // case 4: {
-            //     search = new ManhattanSearch(problem);
-            //     break;
-            // }
+            case 4: {
+                search = new ManhattanInformedSearch(problem);
+                searchType = "MANHATTAN INFORMED SEARCH";
+                break;
+            }
             default:
                 std::cout << "Invalid choice.\n\n";
                 break;
