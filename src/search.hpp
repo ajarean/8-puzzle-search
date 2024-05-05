@@ -4,10 +4,8 @@
 #include <cstdlib>
 
 class Search {
-    private:
-        virtual int heuristic(const State&);
-
     protected:
+        virtual int heuristic(const State&);
         Problem* problem;
         std::pair<int, int> indexInFinal(int);
         int totalNodes;
