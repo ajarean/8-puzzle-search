@@ -10,6 +10,9 @@ int main(int argc, char* argv[]) {
 
     Problem* testProblem = new Problem(testData3, testData);
     UniformCostSearch testSearch(testProblem);
+
+    EuclideanDistanceSearch testSearch3(testProblem);
+    
     MisplacedTileInformedSearch testSearch2(testProblem);
     
     // State s = testProblem.getStartState();
