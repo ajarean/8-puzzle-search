@@ -10,10 +10,10 @@ int main(int argc, char* argv[]) {
 
     Problem* testProblem = new Problem(testData3, testData);
     UniformCostSearch testSearch(testProblem);
-
-    EuclideanDistanceSearch testSearch3(testProblem);
     
     MisplacedTileInformedSearch testSearch2(testProblem);
+
+    EuclideanDistanceSearch testSearch3(testProblem);
     
     // State s = testProblem.getStartState();
     // std::vector<State> v = testProblem.expand(s);
@@ -26,6 +26,7 @@ int main(int argc, char* argv[]) {
     //     std::cout << testProblem.isGoal(state) << '\n';
     // }
 
+    std::cout << "UNIFORM COST SEARCH:" << std::endl;
     std::optional<State> solutionState = testSearch.doSearch();
     if (solutionState) {
         std::cout << "The algorithm expanded " << testSearch.getTotalNodes() << " nodes\n";
@@ -36,11 +37,23 @@ int main(int argc, char* argv[]) {
 
     std::cout << std::endl;
 
+    std::cout << "A* SEARCH WITH MISPLACED TILE HEURISTIC:" << std::endl;
     std::optional<State> solutionState2 = testSearch2.doSearch();
     if (solutionState2) {
         std::cout << "The algorithm expanded " << testSearch2.getTotalNodes() << " nodes\n";
         std::cout << "The max queue size was " << testSearch2.getMaxQueue() << "\n";
         std::cout << "The depth of the goal node was " << testSearch2.getSolutionDepth() << "\n";
+    }
+    else std::cout << "Failed to find goal state bruh" << '\n';
+
+    std::cout << std::endl;
+
+    std::cout << "A* SEARCH WITH EUCLIDEAN DISTANCE HEURISTIC:" << std::endl;
+    std::optional<State> solutionState3 = testSearch3.doSearch();
+    if (solutionState3) {
+        std::cout << "The algorithm expanded " << testSearch3.getTotalNodes() << " nodes\n";
+        std::cout << "The max queue size was " << testSearch3.getMaxQueue() << "\n";
+        std::cout << "The depth of the goal node was " << testSearch3.getSolutionDepth() << "\n";
     }
     else std::cout << "Failed to find goal state bruh" << '\n';
 
