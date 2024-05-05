@@ -39,6 +39,15 @@ class EuclideanDistanceSearch: public Search {
         EuclideanDistanceSearch(Problem* p) : Search(p) {};
 };
 
+class MisplacedTileInformedSearch: public Search {
+    private:
+        int heuristic(const State&);
+    
+    public:
+        MisplacedTileInformedSearch(Problem* p) : Search(p) {};
+
+};
+
 class ManhattanInformedSearch: public Search {
     private:
         int heuristic(const State&);

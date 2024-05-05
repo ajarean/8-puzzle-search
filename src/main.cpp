@@ -14,6 +14,8 @@ int main(int argc, char* argv[]) {
     ManhattanInformedSearch testSearch2(testProblem);
 
     EuclideanDistanceSearch testSearch3(testProblem);
+
+    MisplacedTileInformedSearch testSearch4(testProblem);
     
     // State s = testProblem.getStartState();
     // std::vector<State> v = testProblem.expand(s);
@@ -57,7 +59,20 @@ int main(int argc, char* argv[]) {
     }
     else std::cout << "Failed to find goal state bruh" << '\n';
 
+    std::cout << std::endl;
+
+
+    std::cout << "A* SEARCH WITH MISPLACED TILE HEURISTIC" << std::endl;
+    std::optional<State> solutionState4 = testSearch4.doSearch();
+    if (solutionState4) {
+        std::cout << "The algorithm expanded " << testSearch4.getTotalNodes() << " nodes\n";
+        std::cout << "The max queue size was " << testSearch4.getMaxQueue() << "\n";
+        std::cout << "The depth of the goal node was " << testSearch4.getSolutionDepth() << "\n";
+    }
+    else std::cout << "Failed to find goal state bruh" << '\n';
+
     delete testProblem;
 
     return 0;
+
 } 
