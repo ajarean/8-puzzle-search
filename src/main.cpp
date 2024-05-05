@@ -7,7 +7,7 @@
  * 
  *  TEAM MEMBERS:
  *  Komay Sugiyama (ksugi014)
- *  Adithya IYer (aiyer026)
+ *  Adithya Iyer (aiyer026)
  *  Andy Jarean (ajare002)
  *  Tingxuan Wu (twu148)
  * 
