@@ -75,7 +75,7 @@ void Menu::start() {
     std::cout << "Max number of nodes in the queue at any one time: " << search->getMaxQueue() << ".\n";
     std::cout << "Depth of the goal node: " << search->getSolutionDepth() << ".\n";
     int trace = 0;
-    std::cout << "Would you like to print the trace? If so, press 1. \n\n";
+    std::cout << "Would you like to print the trace? If so, press 1. Else, input a different number: ";
     std::cin >> trace;
     if (trace == 1) {
         std::cout << "Printing trace: \n\n";

@@ -6,7 +6,7 @@ int main(int argc, char* argv[]) {
     while (choice==1) {
         Menu menu;
         menu.start();
-        std::cout << "\nWould you like to try another search?\nIf so, press 1. Else, input a different number." << std::endl;
+        std::cout << "\nWould you like to try another search?\nIf so, press 1. Else, input a different number: \n" << std::endl;
         choice = 0;
         std::cin >> choice;
     }
