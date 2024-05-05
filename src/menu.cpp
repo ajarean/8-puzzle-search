@@ -19,6 +19,7 @@ void Menu::start() {
                 break;
             default:
                 std::cout << "Invalid choice.\n";
+                exit(1);
                 break;
         }
     }
