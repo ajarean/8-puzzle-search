@@ -27,6 +27,7 @@ void Menu::start() {
     this->problem->getGoalState().displayState();
     std::cout << std::endl;
 
+    std::string searchType;
     choice = 0;
     Search* search = nullptr;
     while (choice != 1 && choice != 2 && choice != 3){
@@ -35,14 +36,17 @@ void Menu::start() {
         switch(choice) {
             case 1: {
                 search = new UniformCostSearch(problem);
+                searchType = "UNIFORM COST SEARCH";
                 break;
             }
             case 2: {
                 search = new MisplacedTileInformedSearch(problem);
+                searchType = "MISPLACED TILE INFORMED SEARCH";
                 break;
             }
             case 3: {
                 search = new EuclideanDistanceSearch(problem);
+                searchType = "EUCLIDEAN DISTANCE SEARCH";
                 break;
             }
             // case 4: {
@@ -58,9 +62,14 @@ void Menu::start() {
     std::optional<State> solutionState = search->doSearch();
     if (solutionState) {
         State finalState = solutionState.value();
-        std::cout << "Found goal state in " << finalState.getDepth() << " move(s)\n";
+        std::cout << "\n!!!!!!! GOAL !!!!!!!";
     }
     else std::cout << "Failed to find goal state bruh" << '\n';
+
+    std::cout << std::endl << searchType << "RESULTS : " << std::endl;
+    std::cout << std::endl << "Expanded a total of: " << search->getTotalNodes() << " nodes." << std::endl;
+    std::cout << "Max number of nodes in the queue at any one time: " << search->getMaxQueue() << "." << std::endl;
+    std::cout << "Depth of the goal node: " << search->getSolutionDepth() << "." << std::endl;
 
     delete problem;
     delete search;
