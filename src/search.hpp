@@ -39,13 +39,13 @@ class EuclideanDistanceSearch: public Search {
         EuclideanDistanceSearch(Problem* p) : Search(p) {};
 };
 
-class MisplacedTileInformedSearch: public Search {
+class ManhattanInformedSearch: public Search {
     private:
         int heuristic(const State&);
         int calculateManhattan(std::pair<int, int> , std::pair<int, int> );
     
     public:
-        MisplacedTileInformedSearch(Problem* p) : Search(p) {};
+        ManhattanInformedSearch(Problem* p) : Search(p) {};
 
 };
 

@@ -11,7 +11,7 @@ int main(int argc, char* argv[]) {
     Problem* testProblem = new Problem(testData3, testData);
     UniformCostSearch testSearch(testProblem);
     
-    MisplacedTileInformedSearch testSearch2(testProblem);
+    ManhattanInformedSearch testSearch2(testProblem);
 
     EuclideanDistanceSearch testSearch3(testProblem);
     
@@ -37,7 +37,7 @@ int main(int argc, char* argv[]) {
 
     std::cout << std::endl;
 
-    std::cout << "A* SEARCH WITH MISPLACED TILE HEURISTIC:" << std::endl;
+    std::cout << "A* SEARCH WITH MANHATTAN HEURISTIC:" << std::endl;
     std::optional<State> solutionState2 = testSearch2.doSearch();
     if (solutionState2) {
         std::cout << "The algorithm expanded " << testSearch2.getTotalNodes() << " nodes\n";

@@ -89,7 +89,7 @@ int EuclideanDistanceSearch::calculateEuclidean(std::pair<int,int> pos1, std::pa
 
 // Misplaced Tile
 
-int MisplacedTileInformedSearch::heuristic(const State& c) {
+int ManhattanInformedSearch::heuristic(const State& c) {
     int totalHeuristic = 0;
     std::vector<std::vector<int>> goalState = problem->getGoalState().getData();
     std::vector<std::vector<int>> currentState = c.getData();
@@ -109,7 +109,7 @@ int MisplacedTileInformedSearch::heuristic(const State& c) {
 
 
 
-int MisplacedTileInformedSearch::calculateManhattan(std::pair<int, int> value1, std::pair<int, int> value2) {
+int ManhattanInformedSearch::calculateManhattan(std::pair<int, int> value1, std::pair<int, int> value2) {
     // value1 --> current tile placement
     // value2 --> goal tile placement
     
