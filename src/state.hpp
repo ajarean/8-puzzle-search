@@ -30,6 +30,8 @@ class State {
         bool operator>(const State& rhs) const;
         bool operator>=(const State& rhs) const;
         bool operator==(const State& rhs) const;
+        
+        void displayState() const;
 };
 
 #endif

@@ -1,4 +1,5 @@
 #include "state.hpp"
+#include <iostream>
 
 State::State() {
     this->data = {};
@@ -17,7 +18,7 @@ State::State(const State& state) {
 State& State::operator=(const State& rhs) {
     if (this != &rhs) {
         this->data = rhs.data;
-        if (this->parent != nullptr) delete parent;
+        if (this->parent != nullptr) delete this->parent;
         this->parent = rhs.parent == nullptr ? nullptr : new State(*rhs.parent);
         this->depth = rhs.depth;
         this->cost = rhs.cost;
@@ -92,4 +93,14 @@ bool State::operator>=(const State& rhs) const {
 
 bool State::operator==(const State& rhs) const {
     return data == rhs.data;
+}
+
+void State::displayState() const{
+    int width = data[0].size();
+    for (int i = 0; i < width; ++i) {
+        for (int j = 0; j < width; ++j) {
+            std::cout << data[i][j] << " ";
+        }
+        std::cout << std::endl;
+    }
 }

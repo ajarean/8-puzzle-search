@@ -4,10 +4,8 @@
 #include <cstdlib>
 
 class Search {
-    private:
-        virtual int heuristic(const State&) = 0;
-
     protected:
+        virtual int heuristic(const State&);
         Problem* problem;
         std::pair<int, int> indexInFinal(int);
         int totalNodes;
@@ -25,7 +23,7 @@ class Search {
 
 class UniformCostSearch: public Search {
     private:
-        int heuristic(const State&);
+        int heuristic(const State&) override;
 
     public:
         UniformCostSearch(Problem* p) : Search(p) {}
@@ -42,6 +40,8 @@ class EuclideanDistanceSearch: public Search {
 class MisplacedTileInformedSearch: public Search {
     private:
         int heuristic(const State&);
+        int heuristic(const State&) override;
+        int calculateManhattan(std::pair<int, int> , std::pair<int, int> );
     
     public:
         MisplacedTileInformedSearch(Problem* p) : Search(p) {};
