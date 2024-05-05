@@ -8,7 +8,8 @@ int main(int argc, char* argv[]) {
     while (choice==1) {
         Menu menu;
         menu.start();
-        std::cout << "\nWould you like to try another search? If so, press 1." << std::endl;
+        std::cout << "\nWould you like to try another search? If so, press 1. Else, input a different number." << std::endl;
+        choice = 0;
         std::cin >> choice;
         std::cout << std::endl;
     }

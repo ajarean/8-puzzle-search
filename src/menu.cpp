@@ -8,7 +8,7 @@ void Menu::start() {
      "!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!" << std::endl;
     int choice = 0;
     while (choice != 1 && choice != 2){
-        std::cout << "Please type \"1\" to use a default puzzle, or \"2\" to enter your own puzzle.\n";
+        std::cout << "\nPlease type \"1\" to use a default puzzle, or \"2\" to enter your own puzzle.\n";
         std::cin >> choice;
         switch(choice) {
             case 1:
@@ -18,7 +18,7 @@ void Menu::start() {
                 handleCustomPuzzle();
                 break;
             default:
-                std::cout << "Invalid choice.\n\n";
+                std::cout << "Invalid choice.\n";
                 break;
         }
     }
@@ -68,8 +68,8 @@ void Menu::start() {
     }
     else std::cout << "Failed to find goal state bruh" << '\n';
 
-    std::cout << std::endl << searchType << "RESULTS : " << std::endl;
-    std::cout << std::endl << "Expanded a total of: " << search->getTotalNodes() << " nodes." << std::endl;
+    std::cout << std::endl << searchType << " RESULTS : " << std::endl;
+    std::cout << "Expanded a total of: " << search->getTotalNodes() << " nodes." << std::endl;
     std::cout << "Max number of nodes in the queue at any one time: " << search->getMaxQueue() << "." << std::endl;
     std::cout << "Depth of the goal node: " << search->getSolutionDepth() << "." << std::endl;
 
