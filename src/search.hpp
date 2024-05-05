@@ -10,10 +10,15 @@ class Search {
     protected:
         Problem* problem;
         std::pair<int, int> indexInFinal(int);
-        
+        int totalNodes;
+        int maxQueue;
+        int solutionDepth;
+
     public:
-        
-        Search(Problem* p) : problem(p) {}
+        int getTotalNodes() const;
+        int getMaxQueue() const;
+        int getSolutionDepth() const;
+        Search(Problem* p) : problem(p), totalNodes(0), maxQueue(0), solutionDepth(0) {};
         std::optional<State> doSearch();
         
 };

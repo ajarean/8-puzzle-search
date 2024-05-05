@@ -1,6 +1,7 @@
 #include "search.hpp"
 #include <queue>
 #include <set>
+#include <algorithm>
 #include <iostream>
 
 // Base Class
@@ -19,15 +20,33 @@ std::pair<int, int> Search::indexInFinal(int num) {
     } return f;
 }
 
+int Search::getTotalNodes() const {
+    return totalNodes;
+}
+
+int Search::getMaxQueue() const {
+    return maxQueue;
+}
+
+int Search::getSolutionDepth() const {
+    return solutionDepth;
+}
+
 std::optional<State> Search::doSearch() {
     State start = problem->getStartState();
     std::priority_queue<State, std::vector<State>, std::greater<State>> pqueue;
     pqueue.push(problem->getStartState());
     while (!pqueue.empty()) {
+        int size = pqueue.size();
+        maxQueue = std::max(size, maxQueue);
         State currState = pqueue.top();
         pqueue.pop();
-        if (problem->isGoal(currState)) return currState;
+        if (problem->isGoal(currState)) {
+            solutionDepth = currState.getDepth();
+            return currState;
+        }
         std::vector<State> expanded = problem->expand(currState);
+        totalNodes += expanded.size();
         for (State nextState : expanded) {
             nextState.setCost(nextState.getDepth() + heuristic(nextState));
             pqueue.push(nextState);
@@ -71,6 +90,7 @@ int MisplacedTileInformedSearch::heuristic(const State& c) {
 int MisplacedTileInformedSearch::calculateManhattan(std::pair<int, int> value1, std::pair<int, int> value2) {
     // value1 --> current tile placement
     // value2 --> goal tile placement
+    
     // std::cout << "       Finding distance between " << "(" << value1.second <<" , " << value1.first << ") and "  << "(" << value2.second << ", " << value2.first << ")" << std::endl;
     int dx = std::abs(value1.first - value2.first);
     int dy = std::abs(value1.second - value2.second);
