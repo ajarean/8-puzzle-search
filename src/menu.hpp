@@ -3,9 +3,6 @@
 #include "problem.hpp"
 #include "state.hpp"
 #include "search.hpp"
-#include <iostream>
-#include <stack>
-#include <vector>
 
 class Menu {
     private:

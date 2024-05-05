@@ -1,9 +1,4 @@
 #include "search.hpp"
-#include <queue>
-#include <set>
-#include <algorithm>
-#include <iostream>
-#include <math.h>
 
 // Base Class
 

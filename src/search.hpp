@@ -1,7 +1,6 @@
 #ifndef STATE_H
 #define STATE_H
 #include "problem.hpp"
-#include <cstdlib>
 
 class Search {
     protected:

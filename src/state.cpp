@@ -1,5 +1,4 @@
 #include "state.hpp"
-#include <iostream>
 
 State::State() {
     this->data = {};

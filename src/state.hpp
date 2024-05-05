@@ -1,7 +1,12 @@
 #ifndef NODE_H
 #define NODE_H
-
+#include <algorithm>
+#include <math.h>
+#include <iostream>
+#include <optional>
+#include <stack>
 #include <vector>
+#include <queue>
 
 class State {
     private:

@@ -1,5 +1,4 @@
 #include "problem.hpp"
-#include <iostream>
 
 Problem::Problem() {
     this->startState = nullptr;
