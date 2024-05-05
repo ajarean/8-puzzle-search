@@ -38,6 +38,7 @@ void Menu::start() {
                     break;
                 }
             case 2: {
+                    std::cout << "lol";
                     search = MisplacedTileInformedSearch(problem);
                     break;
                 }
@@ -129,6 +130,3 @@ std::vector<std::vector<int>> Menu::makeGoal() {
     return goal;
 }
 
-void Menu::solveProblem() {
-
-}

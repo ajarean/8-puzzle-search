@@ -19,7 +19,6 @@ class Menu {
         void start();
         void handleDefaultPuzzle();
         void handleCustomPuzzle();
-        void solveProblem();
 };
 
 #endif
