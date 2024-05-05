@@ -28,10 +28,11 @@ class UniformCostSearch: public Search {
 
 class EuclideanDistanceSearch: public Search {
     private:
-        int heuristic(const State&);
+        // int heuristic(const State&);
         int calculateEuclidean(std::pair<int,int>, std::pair<int,int>);
     public:
         EuclideanDistanceSearch(Problem* p) : Search(p) {};
+        int heuristic(const State&); //PUBLIC TEMPORARILY FOR TESTING
         // int calculateEuclidean(std::pair<int,int>, std::pair<int,int>);
 };
 

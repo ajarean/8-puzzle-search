@@ -47,10 +47,12 @@ int EuclideanDistanceSearch::heuristic(const State& currentState) {
     std::vector<std::vector<int>> goalState = problem->getGoalState().getData();
     for(int y = 0; y < goalState.size(); y++){
         for(int x = 0; x< goalState[y].size(); x++){
-            int value = goalState[y][x];
+            int value = currentState.getData()[y][x];
             std::pair coordsFinal = indexInFinal(value);
             std::pair coordsInitial = std::make_pair(y,x);
             totalHeuristic += calculateEuclidean(coordsFinal, coordsInitial);
+            std::cout << "total heuristic is for (" << coordsInitial.first << ","<< coordsInitial.second <<") and (" << 
+            coordsFinal.first << ","<< coordsFinal.second << ") is " << totalHeuristic << std::endl;
         }
     }
     return totalHeuristic;
