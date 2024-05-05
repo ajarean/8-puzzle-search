@@ -27,4 +27,5 @@ make
 
 5. Follow the instructions to select a puzzle and an algorithm.
 <img width="535" alt="Screen Shot 2024-05-04 at 10 48 59 PM" src="https://github.com/ajarean/8-puzzle-search/assets/30739783/86ab9802-e2d4-442e-ad11-15d0440a19a1">
+
 6. Done! :]
