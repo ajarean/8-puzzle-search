@@ -5,3 +5,4 @@ Makefile
 run
 run.exe
 .vscode/
+build/run.exe

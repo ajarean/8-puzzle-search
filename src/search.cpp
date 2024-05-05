@@ -93,9 +93,27 @@ int EuclideanDistanceSearch::calculateEuclidean(std::pair<int,int> pos1, std::pa
     //sqrt((x2-x1)^2+(y2-y1)^2)
 }
 
-// Misplaced Tile
+// Misplaced Tile 
 
 int MisplacedTileInformedSearch::heuristic(const State& c) {
+    int totalHeuristic = 0;
+    std::vector<std::vector<int>> goalState = problem->getGoalState().getData();
+    std::vector<std::vector<int>> currentState = c.getData();
+    for(int y = 0; y<currentState.size(); y++) {
+        for(int x = 0; x<currentState[0].size(); x++) {
+            if(currentState[y][x] != goalState[y][x]) totalHeuristic++;
+            
+        }
+    }
+    // std::cout << "      state heuristic of " << totalHeuristic << std::endl;
+    return totalHeuristic;
+}
+
+
+
+// Manhattan 
+
+int ManhattanInformedSearch::heuristic(const State& c) {
     int totalHeuristic = 0;
     std::vector<std::vector<int>> goalState = problem->getGoalState().getData();
     std::vector<std::vector<int>> currentState = c.getData();
@@ -115,7 +133,7 @@ int MisplacedTileInformedSearch::heuristic(const State& c) {
 
 
 
-int MisplacedTileInformedSearch::calculateManhattan(std::pair<int, int> value1, std::pair<int, int> value2) {
+int ManhattanInformedSearch::calculateManhattan(std::pair<int, int> value1, std::pair<int, int> value2) {
     // value1 --> current tile placement
     // value2 --> goal tile placement
     

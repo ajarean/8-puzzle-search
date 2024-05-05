@@ -8,7 +8,7 @@ void Menu::start() {
      "!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!" << std::endl;
     int choice = 0;
     while (choice != 1 && choice != 2){
-        std::cout << "Please type \"1\" to use a default puzzle, or \"2\" to enter your own puzzle.\n";
+        std::cout << "\nPlease type \"1\" to use a default puzzle, or \"2\" to enter your own puzzle.\n";
         std::cin >> choice;
         switch(choice) {
             case 1:
@@ -18,7 +18,7 @@ void Menu::start() {
                 handleCustomPuzzle();
                 break;
             default:
-                std::cout << "Invalid choice.\n\n";
+                std::cout << "Invalid choice.\n";
                 break;
         }
     }
@@ -32,8 +32,8 @@ void Menu::start() {
     std::string searchType;
     choice = 0;
     Search* search = nullptr;
-    while (choice != 1 && choice != 2 && choice != 3){
-        std::cout << "Enter your choice of algorithm (1-3):\n1. Uniform Cost Search\n2. A* with the Misplaced Tile heuristic\n3. A* with the Euclidean distance heuristic" << std::endl;
+    while (choice != 1 && choice != 2 && choice != 3 && choice != 4){
+        std::cout << "Enter your choice of algorithm (1-4):\n1. Uniform Cost Search\n2. A* with the Misplaced Tile heuristic\n3. A* with the Euclidean distance heuristic" << std::endl;
         std::cin >> choice;
         switch(choice) {
             case 1: {
@@ -51,10 +51,11 @@ void Menu::start() {
                 searchType = "EUCLIDEAN DISTANCE SEARCH";
                 break;
             }
-            // case 4: {
-            //     search = new ManhattanSearch(problem);
-            //     break;
-            // }
+            case 4: {
+                search = new ManhattanInformedSearch(problem);
+                searchType = "MANHATTAN INFORMED SEARCH";
+                break;
+            }
             default:
                 std::cout << "Invalid choice.\n\n";
                 break;
@@ -85,13 +86,15 @@ void Menu::start() {
 }
 
 void Menu::handleDefaultPuzzle() {
-    int choice = 0;
+    int choice = -1;
     this->problemWidth = 3;
     std::vector<std::vector<int>> start, goal;
-    while (choice < 1 || choice > 7){
-        std::cout << "Please choose a default puzzle type:\n1. Trivial\n2. Easy\n3. Oh Boy\n4. Very Easy\n5. doable\n6. IMPOSSIBLE\n7. 5-width example" << std::endl;
+    while (choice < 0 || choice > 8){
+        std::cout << "\nPlease choose a default puzzle type:\n0. Objective\n1. Trivial\n2. Easy\n3. Oh Boy\n4. Very Easy\n5. doable\n6. IMPOSSIBLE\n7. Trivial 4-width\n8. Solvable 4-width" << std::endl;
         std::cin >> choice;
         switch(choice) {
+            case 0: start = {{1,0,3},{4,2,6},{7,5,8}};
+                break;
             case 1: start = {{1,2,3},{4,5,6},{7,8,0}};
                 break;
             case 2: start = {{1,2,0},{4,5,3},{7,8,6}};
@@ -104,8 +107,11 @@ void Menu::handleDefaultPuzzle() {
                 break;
             case 6: start = {{1,2,3},{4,5,6},{8,7,0}};
                 break;
-            case 7: start = {{1,2,3,4,5},{6,7,8,0,9},{11,19,14,13,10},{16,22,12,15,18},{21,20,17,23,24}};
-                this->problemWidth = 5;
+            case 7: start = {{1,2,3,4},{5,6,7,8},{9,10,11,12},{13,14,15,0}};
+                this->problemWidth = 4;
+                break;
+            case 8: start = {{1,2,3,4},{5,6,7,8},{9,12,10,0},{13,14,15,11}};
+                this->problemWidth = 4;
                 break;
             default:
                 std::cout << "Invalid choice.\n\n";
