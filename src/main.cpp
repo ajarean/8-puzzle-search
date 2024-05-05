@@ -11,10 +11,10 @@ int main(int argc, char* argv[]) {
     UniformCostSearch testSearch(testProblem);
 
     //DELETE WHEN DONE vvvvvvvvvvvvvvvv
-    std::vector<std::vector<int>> testDataTEST = {{1, 2, 3}, {4, 5, 6}, {7, 0, 8}}; //expected value 2
-    Problem* testProblemTEST = new Problem(testDataTEST, testData);
-    EuclideanDistanceSearch testSearch3(testProblemTEST);
-    std::cout << testSearch3.heuristic(testData3);
+    // std::vector<std::vector<int>> testDataTEST = {{1, 2, 3}, {4, 5, 6}, {7, 0, 8}}; //expected value 2
+    // Problem* testProblemTEST = new Problem(testDataTEST, testData);
+    EuclideanDistanceSearch testSearch3(testProblem);
+    // std::cout << testSearch3.heuristic(testDataTEST);
     //DELETE WHEN DONE ^^^^^^^^^^^^^^^^^
 
     MisplacedTileInformedSearch testSearch2(testProblem);
