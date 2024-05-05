@@ -10,7 +10,6 @@ State::State() {
 
 State::State(const State& state) {
     this->data = state.data;
-    if (this->parent != nullptr) delete this->parent;
     this->parent = state.parent == nullptr ? nullptr : new State(*state.parent);
     this->depth = state.depth;
     this->cost = state.cost;

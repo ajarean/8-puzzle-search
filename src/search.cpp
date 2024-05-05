@@ -25,8 +25,9 @@ std::optional<State> Search::doSearch() {
     pqueue.push(problem->getStartState());
     while (!pqueue.empty()) {
         State currState = pqueue.top();    
-        //heuristic = cost - depth                                                        
-        std::cout << std::endl << "The best state to expand with g(n) = " << currState.getDepth() << " and h(n) = " << (currState.getCost() - currState.getDepth()) << " is " << std::endl;
+        //heuristic = cost - depth
+        int h = currState.getCost() - currState.getDepth();                                                
+        std::cout << std::endl << "The best state to expand with g(n) = " << currState.getDepth() << " and h(n) = " << h << " is " << std::endl;
         currState.displayState();
         pqueue.pop();
         if (problem->isGoal(currState)) return currState;
