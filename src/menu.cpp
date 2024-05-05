@@ -68,7 +68,7 @@ void Menu::start() {
     }
     else std::cout << "Failed to find goal state bruh" << '\n';
 
-    std::cout << std::endl << searchType << " RESULTS : " << std::endl;
+    std::cout << std::endl << searchType << " RESULTS: \n";
     std::cout << "Expanded a total of: " << search->getTotalNodes() << " nodes." << std::endl;
     std::cout << "Max number of nodes in the queue at any one time: " << search->getMaxQueue() << "." << std::endl;
     std::cout << "Depth of the goal node: " << search->getSolutionDepth() << "." << std::endl;
