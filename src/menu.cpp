@@ -86,7 +86,7 @@ void Menu::start() {
     //Prompt to print solution trace
     if (solutionState) {
         int trace = 0;
-        std::cout << "Would you like to print the trace? If so, press 1. Else, input a different number: ";
+        std::cout << "Would you like to print the trace?\nIf so, press 1. Else, input a different number: ";
         std::cin >> trace;
         if (trace == 1) {
             std::cout << "Printing trace: \n\n";
