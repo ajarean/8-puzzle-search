@@ -74,12 +74,14 @@ void Menu::start() {
     std::cout << "Expanded a total of: " << search->getTotalNodes() << " nodes\n";
     std::cout << "Max number of nodes in the queue at any one time: " << search->getMaxQueue() << "\n";
     std::cout << "Depth of the goal node: " << search->getSolutionDepth() << "\n";
-    int trace = 0;
-    std::cout << "Would you like to print the trace? If so, press 1. Else, input a different number: ";
-    std::cin >> trace;
-    if (trace == 1) {
-        std::cout << "Printing trace: \n\n";
-        printTrace(solutionState.value());
+    if (solutionState) {
+        int trace = 0;
+        std::cout << "Would you like to print the trace? If so, press 1. Else, input a different number: ";
+        std::cin >> trace;
+        if (trace == 1) {
+            std::cout << "Printing trace: \n\n";
+            printTrace(solutionState.value());
+        }
     }
 
     delete search;
