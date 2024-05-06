@@ -47,7 +47,9 @@ void Problem::setGoalState(State& s) {
 std::optional<State> Problem::moveBlankUp(State& s) const {
     std::pair<int, int> blank = s.findBlank();
     std::vector<std::vector<int>> newData = s.getData();
+    //Checks if it is possible to move the blank up
     if (blank.first == 0) return std::nullopt;
+    //Swaps the blank with the number above it
     std::swap(newData[blank.first][blank.second], newData[blank.first-1][blank.second]);
     State* parent = new State(s);
     return State(newData, parent, parent->getDepth()+1);
@@ -56,7 +58,9 @@ std::optional<State> Problem::moveBlankUp(State& s) const {
 std::optional<State> Problem::moveBlankDown(State& s) const {
     std::pair<int, int> blank = s.findBlank();
     std::vector<std::vector<int>> newData = s.getData();
+    //Checks if it is possible to move the blank down
     if (blank.first == newData.size()-1) return std::nullopt;
+    //Swaps the blank with the number below it
     std::swap(newData[blank.first][blank.second], newData[blank.first+1][blank.second]);
     State* parent = new State(s);
     return State(newData, parent, parent->getDepth()+1);
@@ -65,21 +69,27 @@ std::optional<State> Problem::moveBlankDown(State& s) const {
 std::optional<State> Problem::moveBlankLeft(State& s) const {
     std::pair<int, int> blank = s.findBlank();
     std::vector<std::vector<int>> newData = s.getData();
+    //Checks if it is possible to move the blank to the left
     if (blank.second == 0) return std::nullopt;
+    //Swaps the blank with the number to its left
     std::swap(newData[blank.first][blank.second], newData[blank.first][blank.second-1]);
     State* parent = new State(s);
     return State(newData, parent, parent->getDepth()+1);
 }
 
+//Attempts to move the blank right on a given state.
 std::optional<State> Problem::moveBlankRight(State& s) const {
     std::pair<int, int> blank = s.findBlank();
     std::vector<std::vector<int>> newData = s.getData();
+    //Checks if it is possible to move the blank to the right
     if (blank.second == newData[0].size()-1) return std::nullopt;
+    //Swaps the blank with the number to its right
     std::swap(newData[blank.first][blank.second], newData[blank.first][blank.second+1]);
     State* parent = new State(s);
     return State(newData, parent, parent->getDepth()+1);
 }
 
+//Applies all four operators to a given state. Returns all possible states formed by applying operators to a given state.
 std::vector<State> Problem::expand(State& s) const {
     std::vector<State> expansions;
     std::optional<State> upState = moveBlankUp(s);

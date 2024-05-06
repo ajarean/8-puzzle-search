@@ -61,6 +61,7 @@ void State::setCost(int cost) {
     this->cost = cost;
 }
 
+//Locates the 0 within the array and returns coordinates
 std::pair<int, int> State::findBlank() const {
     std::pair<int, int> blankLocation;
     for (int i = 0; i < data.size(); ++i) {

@@ -1,11 +1,15 @@
 #include "menu.hpp"
 
-Menu::Menu() { this->problem = nullptr, problemWidth = 0, nodesExpanded = 0, maxNodesQueued = 0, goalNodeDepth = 0; };
+Menu::Menu() { 
+    this->problem = nullptr; 
+    problemWidth = 0;
+}
 
 void Menu::start() {
     std::cout << "!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!" <<
     "\nWelcome to Komay and friends' 8-puzzle solver!\nFeaturing:\n- Komay Sugiyama (ksugi014)\n- Adithya Iyer (aiyer026)\n- Andy Jarean (ajare002)\n- Tingxuan Wu (twu148)\n"
      "!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!" << std::endl;
+    //Prompt to use default or custom puzzle
     int choice = 0;
     while (choice != 1 && choice != 2){
         std::cout << "\nPlease type \"1\" to use a default puzzle, or \"2\" to enter your own puzzle.\n";
@@ -24,12 +28,14 @@ void Menu::start() {
         }
     }
 
+    //Display start and final states
     std::cout << std::endl << "Your starting state is: " << std::endl;
     this->problem->getStartState().displayState();
     std::cout << std::endl << "Your goal state is: " << std::endl;
     this->problem->getGoalState().displayState();
     std::cout << std::endl;
 
+    //Prompt to choose search algorithm
     std::string searchType;
     choice = 0;
     Search* search = nullptr;
@@ -63,6 +69,7 @@ void Menu::start() {
         }
     }
 
+    //Run search
     std::optional<State> solutionState = search->doSearch();
     if (solutionState) {
         State finalState = solutionState.value();
@@ -70,10 +77,13 @@ void Menu::start() {
     }
     else std::cout << "\nCould not find goal state. Puzzle is unsolvable.\n";
 
+    //Print search results
     std::cout << std::endl << searchType << " RESULTS: \n";
     std::cout << "Expanded a total of: " << search->getTotalNodes() << " nodes\n";
     std::cout << "Max number of nodes in the queue at any one time: " << search->getMaxQueue() << "\n";
     std::cout << "Depth of the goal node: " << search->getSolutionDepth() << "\n";
+
+    //Prompt to print solution trace
     if (solutionState) {
         int trace = 0;
         std::cout << "Would you like to print the trace? If so, press 1. Else, input a different number: ";
@@ -147,6 +157,7 @@ void Menu::handleCustomPuzzle() {
     this->problem = new Problem(start, goal);
 }
 
+//Function to procedurally gernerate goal state based on puzzle size
 std::vector<std::vector<int>> Menu::makeGoal() {
     std::vector<std::vector<int>> goal(problemWidth, std::vector<int>(problemWidth));
 
@@ -166,10 +177,12 @@ void Menu::printTrace(State& s) {
     State* currState = &s;
     std::stack<State*> stack;
     stack.push(currState);
+    //Follow state->parent path all the way to start state
     while(currState->getParent() != nullptr) {
         currState = currState->getParent();
         stack.push(currState);
     }
+    //Display nodes on stack, effectively printing the solution trace
     while(!stack.empty()) {
         State* newState = stack.top();
         stack.pop();

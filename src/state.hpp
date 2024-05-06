@@ -11,9 +11,13 @@
 
 class State {
     private:
+        //State representation of the game board with a 2D vector
         std::vector<std::vector<int>> data;
+        //Pointer used to build solution trace
         State* parent;
+        //Number of moves from the the start state, aka G(n)
         int depth;
+        //Total cost for a state, aka F(n)
         int cost;
     public:
         State();

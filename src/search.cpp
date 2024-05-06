@@ -34,23 +34,28 @@ int Search::getSolutionDepth() const {
 
 std::optional<State> Search::doSearch() {
     State start = problem->getStartState();
+    //Priority queue acts as the frontier
     std::priority_queue<State, std::vector<State>, std::greater<State>> pqueue;
+    //Hash Set keeps track of already seen nodes for optimization
     std::set<std::vector<std::vector<int>>> seen;
     pqueue.push(problem->getStartState());
     while (!pqueue.empty()) {
         int size = pqueue.size();
         maxQueue = std::max(size, maxQueue);
         State currState = pqueue.top();
-        //heuristic = cost - depth
-        int h = currState.getCost() - currState.getDepth();                                                
-        std::cout << std::endl << "The best state to expand with g(n) = " << currState.getDepth() << " and h(n) = " << h << " is " << std::endl;
-        currState.displayState();
         pqueue.pop();
+        //Cost is always equal to the depth because each move has the same cost.
+        //Heuristic can be calculated by the total cost of a state minus the state's depth, i.e. H(n) = F(n) - G(n).                           
+        std::cout << std::endl << "The best state to expand with G(n) = " << currState.getDepth() << " and H(n) = " << (currState.getCost()-currState.getDepth()) << " is " << std::endl;
+        currState.displayState();
+        //Total number of nodes is all the nodes that we've visited so far, stored in the hashset
         totalNodes = seen.size();
         if (problem->isGoal(currState)) {
+            //Solution found
             solutionDepth = currState.getDepth();
             return currState;
         }
+        //If the currState has already been seen, don't expand it
         if (seen.contains(currState.getData())) continue;
         std::vector<State> expanded = problem->expand(currState);
         for (State nextState : expanded) {
@@ -59,6 +64,7 @@ std::optional<State> Search::doSearch() {
         }
         seen.insert(currState.getData());
     }
+    //No solution found, puzzle is unsolvable
     solutionDepth = -1;
     return std::nullopt;
 }
@@ -109,7 +115,6 @@ int MisplacedTileInformedSearch::heuristic(const State& c) {
 }
 
 
-
 // Manhattan 
 
 int ManhattanInformedSearch::heuristic(const State& c) {
@@ -130,7 +135,6 @@ int ManhattanInformedSearch::heuristic(const State& c) {
     // std::cout << "      state heuristic of " << totalHeuristic << std::endl;
     return totalHeuristic;
 }
-
 
 
 int ManhattanInformedSearch::calculateManhattan(std::pair<int, int> value1, std::pair<int, int> value2) {
