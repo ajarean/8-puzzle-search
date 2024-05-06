@@ -8,9 +8,6 @@ class Menu {
     private:
         Problem* problem;
         int problemWidth;
-        int nodesExpanded;
-        int maxNodesQueued;
-        int goalNodeDepth;
         std::vector<std::vector<int>> makeGoal();
         void printTrace(State&);
     public:

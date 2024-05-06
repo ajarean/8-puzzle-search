@@ -1,7 +1,7 @@
 #include "search.hpp"
 #include "menu.hpp"
 
-/**
+/*
  * 
  *  LINK TO THE GITHUB REPO: https://github.com/ajarean/8-puzzle-search
  * 
@@ -19,7 +19,7 @@ int main(int argc, char* argv[]) {
     while (choice==1) {
         Menu menu;
         menu.start();
-        std::cout << "\nWould you like to try another search?\nIf so, press 1. Else, input a different number: \n" << std::endl;
+        std::cout << "\nWould you like to try another search?\nIf so, press 1. Else, input a different number: ";
         choice = 0;
         std::cin >> choice;
     }
