@@ -68,12 +68,12 @@ void Menu::start() {
         State finalState = solutionState.value();
         std::cout << "\n!!!!!!! GOAL !!!!!!!";
     }
-    else std::cout << "Could not find goal state. Puzzle is unsolvable.\n";
+    else std::cout << "\nCould not find goal state. Puzzle is unsolvable.\n";
 
     std::cout << std::endl << searchType << " RESULTS: \n";
-    std::cout << "Expanded a total of: " << search->getTotalNodes() << " nodes.\n";
-    std::cout << "Max number of nodes in the queue at any one time: " << search->getMaxQueue() << ".\n";
-    std::cout << "Depth of the goal node: " << search->getSolutionDepth() << ".\n";
+    std::cout << "Expanded a total of: " << search->getTotalNodes() << " nodes\n";
+    std::cout << "Max number of nodes in the queue at any one time: " << search->getMaxQueue() << "\n";
+    std::cout << "Depth of the goal node: " << search->getSolutionDepth() << "\n";
     int trace = 0;
     std::cout << "Would you like to print the trace? If so, press 1. Else, input a different number: ";
     std::cin >> trace;
@@ -82,7 +82,6 @@ void Menu::start() {
         printTrace(solutionState.value());
     }
 
-    delete problem;
     delete search;
 }
 

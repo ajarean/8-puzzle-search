@@ -2,6 +2,10 @@
 
 // Base Class
 
+Search::~Search() {
+    delete problem;
+}
+
 std::pair<int, int> Search::indexInFinal(int num) {
     std::pair<int, int> f = {-1, -1};
     std::vector<std::vector<int>> goalState = problem->getGoalState().getData();
@@ -55,12 +59,13 @@ std::optional<State> Search::doSearch() {
         }
         seen.insert(currState.getData());
     }
+    solutionDepth = -1;
     return std::nullopt;
 }
 
-int Search::heuristic(const State& currentState) {
-    return 0;
-}
+// int Search::heuristic(const State& currentState) {
+//     return 0;
+// }
 
 // Uniform
 
