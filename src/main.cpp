@@ -1,7 +1,7 @@
 #include "search.hpp"
 #include "menu.hpp"
 
-/**
+/*
  * 
  *  LINK TO THE GITHUB REPO: https://github.com/ajarean/8-puzzle-search
  * 

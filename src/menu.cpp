@@ -68,7 +68,7 @@ void Menu::start() {
         State finalState = solutionState.value();
         std::cout << "\n!!!!!!! GOAL !!!!!!!";
     }
-    else std::cout << "Failed to find goal state bruh" << '\n';
+    else std::cout << "Could not find goal state. Puzzle is unsolvable.\n";
 
     std::cout << std::endl << searchType << " RESULTS: \n";
     std::cout << "Expanded a total of: " << search->getTotalNodes() << " nodes.\n";

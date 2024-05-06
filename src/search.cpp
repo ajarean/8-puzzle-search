@@ -31,26 +31,29 @@ int Search::getSolutionDepth() const {
 std::optional<State> Search::doSearch() {
     State start = problem->getStartState();
     std::priority_queue<State, std::vector<State>, std::greater<State>> pqueue;
+    std::set<std::vector<std::vector<int>>> seen;
     pqueue.push(problem->getStartState());
     while (!pqueue.empty()) {
         int size = pqueue.size();
         maxQueue = std::max(size, maxQueue);
-        State currState = pqueue.top();    
+        State currState = pqueue.top();
         //heuristic = cost - depth
         int h = currState.getCost() - currState.getDepth();                                                
         std::cout << std::endl << "The best state to expand with g(n) = " << currState.getDepth() << " and h(n) = " << h << " is " << std::endl;
         currState.displayState();
         pqueue.pop();
+        totalNodes = seen.size();
         if (problem->isGoal(currState)) {
             solutionDepth = currState.getDepth();
             return currState;
         }
+        if (seen.contains(currState.getData())) continue;
         std::vector<State> expanded = problem->expand(currState);
-        totalNodes += expanded.size();
         for (State nextState : expanded) {
             nextState.setCost(nextState.getDepth() + heuristic(nextState));
             pqueue.push(nextState);
         }
+        seen.insert(currState.getData());
     }
     return std::nullopt;
 }
